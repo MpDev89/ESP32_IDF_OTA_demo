@@ -41,11 +41,6 @@ Designed as a practical OTA example:
   - ESP-IDF CLI (`idf.py`)
   - VS Code + ESP-IDF extension (optional)
 
-Hardware:
-- Any ESP32 board
-- 1× button connected to a GPIO (or on-board BOOT/USER button if available).In this application GPIO 13 is used.
-- 1× LED (on-board or external) on a configurable GPIO.In this application GPIO 18 is used.
-
 Network:
 - Wi-Fi 2.4 GHz
 - An **HTTPS** endpoint hosting a firmware `.bin` file reachable by the ESP32
@@ -58,6 +53,7 @@ Application and ESP32 require to be connected to: 1xLED and 1x Button. Here a po
 |:-----------:|:------------:|
 | GND    | 1 |
 | D13    | 4 |
+
 Button is configured on release then transition from GND to 3.3V. Detail on configuration available in scheme "images\ESP32_btn_setup.png".
 
 | ESP32 NodeMCU pin | Diode LED pin |
@@ -66,6 +62,7 @@ Button is configured on release then transition from GND to 3.3V. Detail on conf
 | GND    | K |
 
 Anode pin requires 1K series resistor.
+
 ---
 
 ## 🏗️ Project Structure
