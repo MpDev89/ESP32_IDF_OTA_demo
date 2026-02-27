@@ -1,0 +1,123 @@
+menu "OTA CONFIG"
+    config FIRMWARE_UPGRADE_URL
+        string "firmware upgrade url endpoint"
+        default "your_firmware_upgrade_url_endpoint"
+        help
+            URL of server which hosts the firmware
+            image.
+
+    config USE_CERT_BUNDLE
+        bool "Enable certificate bundle"
+        default y
+        depends on MBEDTLS_CERTIFICATE_BUNDLE
+        help
+            Enable trusted root certificate bundle. This approach allows to have
+            OTA updates functional with any public server without requirement
+            to explicitly add its server certificate.
+
+    config FIRMWARE_UPGRADE_URL_FROM_STDIN
+        bool
+        default y if FIRMWARE_UPGRADE_URL = "FROM_STDIN"
+
+    config SKIP_COMMON_NAME_CHECK
+        bool "Skip server certificate CN fieldcheck"
+        default n
+        help
+            This allows you to skip the validation of OTA server certificate CN field.
+
+    config FIRMWARE_UPGRADE_BIND_IF
+        bool "Support firmware upgrade bind specified interface"
+        default n
+        help
+            This allows you to bind specified interface in OTA example.
+
+    choice FIRMWARE_UPGRADE_BIND_IF_TYPE
+        prompt "Choose OTA data bind interface"
+        default FIRMWARE_UPGRADE_BIND_IF_STA
+        depends on FIRMWARE_UPGRADE_BIND_IF
+        help
+            Select which interface type of OTA data go through.
+
+        config FIRMWARE_UPGRADE_BIND_IF_STA
+            bool "Bind wifi station interface"
+            depends on CONNECT_WIFI
+            help
+                Select wifi station interface to pass the OTA data.
+
+        config FIRMWARE_UPGRADE_BIND_IF_ETH
+            bool "Bind ethernet interface"
+            depends on CONNECT_ETHERNET
+            help
+                Select ethernet interface to pass the OTA data.
+    endchoice
+endmenu
+
+menu "WIFI CONFIG"
+
+    config WIFI_SSID
+        string "WiFi SSID"
+        default "your_wifi_ssid"
+        help
+            SSID of WiFi access point to connect to.
+
+    config WIFI_PASS
+        string "WiFi Password"
+        default "your_wifi_password"
+        help
+            Password of WiFi access point to connect to.
+
+    config WIFI_MAX_RETRY
+        int "WiFi Max Retry"
+        default 5
+        help
+            Number of times to retry connecting to WiFi before giving up.
+endmenu
+
+menu "GPIO CONFIG"
+
+    config GPIO_BTN_PIN
+        int "Button GPIO number"
+        default 13
+        range 0 39
+        help
+            GPIO number used for the button. Avoid 6-11 (flash). Beware strapping pins (0,2,4,5,12,15).
+
+    choice GPIO_BTN_INTERNAL_CIRCUIT
+        prompt "Enable internal pull-up or pull-down for button"
+        default GPIO_BTN_PULLUP
+        help
+            Enable internal pull-up or pull-down resistor for button GPIO.
+        config GPIO_BTN_PULLUP
+            bool "Enable internal pull-up"
+        config GPIO_BTN_PULLDOWN
+            bool "Enable internal pull-down"
+    endchoice
+
+    choice GPIO_BTN_INTR
+        prompt "Button interrupt type"
+        default GPIO_BTN_INTR_POSEDGE
+
+        config GPIO_BTN_INTR_NEGEDGE
+            bool "Falling edge"
+
+        config GPIO_BTN_INTR_POSEDGE
+            bool "Rising edge"
+
+        config GPIO_BTN_INTR_ANY
+            bool "Any edge"
+    endchoice
+
+    config GPIO_OUT_PIN
+        int "Output GPIO number"
+        default 18
+        range 0 39
+
+endmenu
+
+menu "APP CONFIG"
+    config TOGGLE_LED_FREQUENCY
+        int "Toggle LED frequency (ms)"
+        default 500
+        help
+            Time in milliseconds between toggling the LED on and off.
+endmenu
