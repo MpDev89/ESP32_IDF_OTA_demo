@@ -116,9 +116,13 @@ Open menuconfig and set:
 
 ### 4) Build, Flash, Monitor
 ```bash
-idf.py build flash monitor
+idf.py build 
 ```
-Moreover, you can use ESP-IDF extension to build flash and monitor
+Be careful on ESP32 version used and verify OTA partitions applying settings in "sdkconfig.defaults" file. It's necessary to guarantee OTA flashing.
+```bash
+idf.py flash 
+```
+Moreover, you can use ESP-IDF extension to build and flash.
 
 ## 🧪 Expected Behavior
 
