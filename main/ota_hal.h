@@ -15,10 +15,20 @@
  *
  *****************************************************************************/
 /**
- * @file http_hal.h
- * @brief HTTP server abstraction layer (HAL) for esp_http_server
- * This module provides a simple wrapper around esp_http_server to manage server lifecycle
- * and endpoint registration. It allows registering endpoints before starting the server and handles common response patterns.
+ * @file ota_hal.h
+ * @brief OTA HAL interface for ESP32 firmware updates
+ * 
+ * This module provides a simple interface to perform OTA updates over HTTPS.
+ * It abstracts away the details of HTTP client configuration and OTA process.
+ * 
+ * The following functions are provided:
+ * - ota_hal_init(): Initialize the OTA HAL with configuration checks.
+ * - ota_hal_start(): Start the OTA update process (blocking, calls esp_restart() on
+ *  success).
+ * - ota_hal_mark_app_valid_if_needed(): Mark the running app as valid if it's pending
+ * verification (call early on boot after self-test).
+ * 
+ * 
  * @author Marconatale Parise   
  * @date 19 Feb 2026
  */

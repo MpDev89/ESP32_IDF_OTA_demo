@@ -20,6 +20,13 @@
  * This module provides functions to initialize Wi-Fi, connect in STA mode, and
  * disable power-save mode for better OTA performance. It also exposes the esp-netif handle for
  * the STA interface.
+ * 
+ * The following functions are provided:
+ * - wifi_init_connection(): Initializes esp-netif and the default event loop.
+ * - wifi_connect_sta(): Connects to a Wi-Fi AP in STA mode (blocking).
+ * - wifi_disable_powersave(): Disables Wi-Fi power-save mode.
+ * - wifi_get_netif_sta(): Returns the esp-netif handle for the STA interface.
+ * 
  * @author Marconatale Parise
  * @date 19 Feb 2026
  */
