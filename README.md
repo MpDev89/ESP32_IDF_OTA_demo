@@ -187,7 +187,7 @@ Custom code for variables and constant are marked with:
 
 Custom code for function are marked specifying the author (@author Marconatale Parise) in the description.
 
-## 🌐 Contatti
+## 🌐 Contacts
 [![Email](https://img.shields.io/badge/mail-marconatale%20parise-blue)](mailto:marconatale.parise@gmail.com)  
 [![LinkedIn](https://img.shields.io/badge/Linkedin-marconatale%20parise-blue)](https://www.linkedin.com/in/marconatale-parise-48a07b94)  
-[![GitHub](https://img.shields.io/badge/Account-Github-black)](https://github.com/MpDev89)
+[![GitHub](https://img.shields.io/badge/Account-Github-black)](https://Mpdev89.github.io)
